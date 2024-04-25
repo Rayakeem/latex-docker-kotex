@@ -1,4 +1,3 @@
-FROM blang/latex:ctanbasic
-
-RUN tlmgr init-usertree || true
-# RUN tlmgr install ... || true
+#!/bin/sh
+IMAGE=mylatex:latest
+exec docker run --rm -i --user="$(id -u):$(id -g)" --net=none -v "$PWD":/data "$IMAGE" "$@"
